@@ -1,3 +1,5 @@
+import json
+
 alertes=[
     {"niveau":"Connexion suspecte", "ip": "192.168.1.105", "niveau": "critique"},
     {"niveau":"Accès non autorisé", "ip": "192.168.1.106", "niveau": "moyen"},
@@ -27,4 +29,7 @@ for alerte in alertes:
         print(alerte)
         n+=1
 
-print(f"Niveau critique: ", nc, "Niveau élevé: ",ne, "Niveau moyen: ", nm, "Niveau faible ou inconnu: ", n)
+print(f"Niveau critique: ", nc, "   Niveau élevé: ",ne, "   Niveau moyen: ", nm, "   Niveau faible ou inconnu: ", n)
+
+with open("data/alertes.json", "w", encoding="utf-8") as fichier:
+    json.dump(alertes, fichier, ensure_ascii=False, indent=2)
